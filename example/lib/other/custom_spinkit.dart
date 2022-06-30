@@ -1,5 +1,4 @@
 import 'package:flutter/widgets.dart';
-import 'package:flutter_spinkit/src/utils.dart';
 
 class SpinKitFadingCircle extends StatefulWidget {
   SpinKitFadingCircle({
@@ -9,9 +8,7 @@ class SpinKitFadingCircle extends StatefulWidget {
     this.itemBuilder,
     this.animationController,
     this.duration = const Duration(milliseconds: 1200),
-  })  : assert(
-            !(itemBuilder is IndexedWidgetBuilder && color is Color) &&
-                !(itemBuilder == null && color == null),
+  })  : assert(!(itemBuilder is IndexedWidgetBuilder && color is Color) && !(itemBuilder == null && color == null),
             'You should specify either a itemBuilder or a color'),
         assert(size != null),
         super(key: key);
@@ -26,8 +23,7 @@ class SpinKitFadingCircle extends StatefulWidget {
   _SpinKitFadingCircleState createState() => _SpinKitFadingCircleState();
 }
 
-class _SpinKitFadingCircleState extends State<SpinKitFadingCircle>
-    with SingleTickerProviderStateMixin {
+class _SpinKitFadingCircleState extends State<SpinKitFadingCircle> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
@@ -78,8 +74,7 @@ class _SpinKitFadingCircleState extends State<SpinKitFadingCircle>
         child: Align(
           alignment: Alignment.center,
           child: FadeTransition(
-            opacity: DelayTween(begin: 0.0, end: 1.0, delay: delay)
-                .animate(widget.animationController),
+            opacity: Tween(begin: 0.0, end: 1.0).animate(widget.animationController),
             child: SizedBox.fromSize(
               size: Size.square(_size),
               child: _itemBuilder(i - 1),
